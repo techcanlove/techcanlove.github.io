@@ -138,19 +138,17 @@
 </ol>
 <h2 id="創建新頁面"><a href="#創建新頁面" class="headerlink" title="創建新頁面"></a>創建新頁面</h2><p>hexo new [page_name] style</p>
 <h2 id="md檔案撰寫"><a href="#md檔案撰寫" class="headerlink" title="md檔案撰寫"></a>md檔案撰寫</h2><p>想在Hexo中寫文章，必須使用mark down語法，其文件副檔名為 “.md”。<br>鑑於網路上已非常多相關教學文章，關於mark down語法，這邊就不再贅述。</p>
-<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><p>生成網站內容： hexo generate</p>
+<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><h5 id="if-meet-problem-gt-https-israynotarray-com-other-20200510-1067127387"><a href="#if-meet-problem-gt-https-israynotarray-com-other-20200510-1067127387" class="headerlink" title="if meet problem -&gt; https://israynotarray.com/other/20200510/1067127387/"></a>if meet problem -&gt; <a target="_blank" rel="noopener" href="https://israynotarray.com/other/20200510/1067127387/">https://israynotarray.com/other/20200510/1067127387/</a></h5><p>生成網站內容： hexo generate</p>
 <p>hexo server 或 hexo s<br>之後開啟瀏覽器，貼上連結，開始參觀自己的網站啦。</p>
 <h2 id="主題更換"><a href="#主題更換" class="headerlink" title="主題更換"></a>主題更換</h2><p>在github中搜尋hexo theme，挑選喜歡的主題，將之下載並放置於themes資料夾之中<br>修改_config.yml 使網頁變成自己喜歡的樣子</p>
 <h2 id="插件安裝"><a href="#插件安裝" class="headerlink" title="插件安裝"></a>插件安裝</h2><p>一鍵部屬:<br>npm install –save hexo-deployer-git<br>搜索功能:<br>npm install hexo-generator-search –save<br>npm install hexo-generator-searchdb –save</p>
-<p>插件皆須要修該根目錄下的_config.yml方可使用。</p>
+<p>插件皆須要修改根目錄下的_config.yml方可使用。</p>
 <h2 id="備份源碼"><a href="#備份源碼" class="headerlink" title="備份源碼"></a>備份源碼</h2><p>當一切都正常運作後，你希望在其他電腦上也能編輯文章，並且部署到github上，所以你必須複製整個hexo專案資料夾到另一台電腦上，這時你的源碼分岔出了兩個版本，一個是在你原本的電腦上，一個是你新複製的。你要讓兩個資料夾同步又挺麻煩的，要複製來複製去的，不如我們利用github上本來就有的功能，用push、pull的方式在本地端上傳與更新源碼，這樣我們github.io的網站就需要兩個repo來管理了，一個是本來就用來放靜態文件內容的xxx.github.io repo，另一個則是用來放整個hexo專案的source repo。</p>
-<h2 id="一次到位"><a href="#一次到位" class="headerlink" title="一次到位!"></a>一次到位!</h2><p>當你用git將你編輯過的文章或心血的文章上傳至source repo後，你還需要用hexo generate 一個public資料夾出來，並將之放置(deploy)於本來就創建好的xxx.github.io repo。有沒有一鍵更新呢?</p>
+<h2 id="一次到位"><a href="#一次到位" class="headerlink" title="一次到位!"></a>一次到位!</h2><p>當你用git將你編輯過的文章或心血的文章上傳至source repo後，你還需要用hexo generate 一個public資料夾出來，並將之放置(hexo deploy)於本來就創建好的xxx.github.io repo。有沒有一鍵更新呢?</p>
 <h2 id="Appveyor-CI"><a href="#Appveyor-CI" class="headerlink" title="Appveyor (CI)"></a>Appveyor (CI)</h2><ul>
 <li>only free for public repo</li>
 </ul>
-<h2 id="Big-picture-大框架"><a href="#Big-picture-大框架" class="headerlink" title="Big picture 大框架"></a>Big picture 大框架</h2><ul>
-<li>pic [url &#x3D; “”]</li>
-</ul>
+<h2 id="Big-picture-大框架"><a href="#Big-picture-大框架" class="headerlink" title="Big picture 大框架"></a>Big picture 大框架</h2><p> <img src="/" alt="big picture"></p>
  
       <!-- reward -->
       
