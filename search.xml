@@ -98,11 +98,11 @@
 <p>下一篇將闡述這些量子閘的用法。</p>
 ]]></content>
       <tags>
-        <tag>server</tag>
+        <tag>quantum computing</tag>
       </tags>
   </entry>
   <entry>
-    <title>quantum2</title>
+    <title>量子計算-首部曲2</title>
     <url>/2023/10/25/quantum2/</url>
     <content><![CDATA[<p>接上回，我們討論了一些量子閘。現在我們將說明如何使用這些閘。</p>
 <h2 id="Hadamard-Gate"><a href="#Hadamard-Gate" class="headerlink" title="Hadamard Gate:"></a>Hadamard Gate:</h2><p><img src="/images/post_quantum2/hgate_ex1.jpg" alt="把經典位元變成量子位元！"></p>
@@ -152,5 +152,8 @@
 <p>假設黑盒是處於不做事模式，並預設輸入都是|0&gt;，上下量子位元經過X閘後都變成了|1&gt;，再經過H閘後，變成了[1&#x2F;√2 , -1&#x2F;√2]ᵀ，接著將兩個量子位元做CNOT，得右上的輸出為，CNOT( 1&#x2F;2[1,-1,-1,1]ᵀ ) &#x3D; 1&#x2F;2[1,-1,1,-1]ᵀ &#x3D; [1&#x2F;√2 , 1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2 , -1&#x2F;√2]ᵀ ，接著用H閘使之失去疊加態，得[1, 0]ᵀ, [0, 1]ᵀ ，最後結果為|01&gt;。</p>
 <p>你可以通過將input指定為 |0&gt; 來計算結果，並嘗試機器內其他3種可能的工作模式，以得到最後觀察的結果。最後，我們展示了量子計算機如何在該問題上勝過經典計算機。若將此問題推廣，可以輸入n個量子比特，且機器有2^n種狀態，使用量子計算可以獲得指數倍的加速!</p>
 ]]></content>
+      <tags>
+        <tag>quantum computing</tag>
+      </tags>
   </entry>
 </search>
