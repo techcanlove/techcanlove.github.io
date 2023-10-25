@@ -213,11 +213,11 @@
 <li>量子方法:</li>
 </ul>
 <p>首先，我們需要使用我們之前討論過的一些量子閘來構建吐司處理機器。</p>
-<p>![Machine circuit](&#x2F;images&#x2F;post_quantum2&#x2F;machine circuit.jpg)</p>
+<p><img src="/images/post_quantum2/machine_circuit.jpg" alt="Machine circuit"></p>
 <p>上圖是我們設計機器的方式。黑框代表狀態未知的機器。左側的輸入可放入吐司，而左側的輸出是|0&gt; (實際為輸入，只是命名問題) 。右側的吐司輸出是我們所關心的。為什麼我們不能只使用一條輸入和一條輸出線呢？因為它會使操作不可逆（常數函數會導致信息丟失，造成你不能將輸出轉換為輸入），為了符合所有的操作都是可逆的規則，因此構建該量子計算機需要兩條線。</p>
-<p>![constant mode](&#x2F;images&#x2F;post_quantum2&#x2F;machine circuit constant.jpg)</p>
+<p><img src="/images/post_quantum2/machine_circuit_constant.jpg" alt="constant mode"></p>
 <p>第一種是常數0模式，最簡單的一種，直接將|0&gt;輸入輸出，而常數1模式只需要X閘，使之恆定輸出|1&gt;。</p>
-<p>![variable mode](&#x2F;images&#x2F;post_quantum2&#x2F;machine circuit var.jpg)</p>
+<p><img src="/images/post_quantum2/machine_circuit_var.jpg" alt="variable mode"></p>
 <p>那麼”不做事模式”意味著輸出等於input輸入。我們可以在這裡使用 CNOT 閘。當左側輸入（控制位）為|1&gt; 時，CNOT 門將翻轉目標位，因此右側輸出將為|1&gt;。而當左側輸入為|0&gt;時，目標位沒有被修改，所以右輸出為|0&gt;。</p>
 <p>這就是該機器的 4 種模式在量子世界中的工作方式。最後一個問題是我們如何只用一個查詢（測試）來區分常數模式和變量模式！</p>
 <p>我們應該做什麼？如果量子位元不在量子疊加態，我們需要在量子計算機中進行兩次查詢。所以我們應該在這台機器上安裝額外的量子閘。使我們可以利用量子態的疊加來加速查詢過程！</p>
