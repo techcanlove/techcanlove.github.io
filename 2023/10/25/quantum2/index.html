@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Free blog server |  core.blog</title>
+      <title>quantum2 |  core.blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-server"
+  id="post-quantum2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Free blog server
+  quantum2
 </h1>
  
 
@@ -72,15 +72,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/25/server/" class="article-date">
-  <time datetime="2023-03-25T13:16:15.000Z" itemprop="datePublished">2023-03-25</time>
+      <a href="/2023/10/25/quantum2/" class="article-date">
+  <time datetime="2023-10-25T15:20:54.000Z" itemprop="datePublished">2023-10-25</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -104,51 +104,53 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="想寫部落格"><a href="#想寫部落格" class="headerlink" title="想寫部落格"></a>想寫部落格</h2><p>如果你想在網上寫部落格，租個服務器架wordpress，或是直接用別人搭建好的服務，如medium、Pixnet、其他社群媒體等。皆是非常方便的，但使用別人架設好的服務，你無法自己設計版面，大家都是一樣的，而使用自行架站的方式，雖然可以使用自己喜歡的框架，選擇自己喜歡的主題設計，但免不了要付一筆租借服務器的費用。有沒有類似wordpress的網站框架，又不用租借服務器的方法呢?</p>
-<h2 id="本地端方法"><a href="#本地端方法" class="headerlink" title="本地端方法"></a>本地端方法</h2><p> <img src="/images/hexo_blog_bigPic.png" alt="架構圖1"></p>
-<h2 id="Github-io"><a href="#Github-io" class="headerlink" title="Github.io"></a>Github.io</h2><p>前面提到，要架設一個部落格，總是需要一個主機，或者說服務器，而github網站上剛好就提供這樣子的免費服務。github是一個大型的代碼聚集地，你可以把自己的程式碼上傳至該網站，與他人共同編輯。而你所要展示的部落格其實也是由一堆html、css、js程式碼組成的，你只需要將這些程式碼放在該網站上即可。</p>
-<p>然而，該網站只能幫你展示靜態的html文件，無法整合資料庫的操作，所以你無法像wordpress一樣，把內容抽離出來放在資料庫，當有人要瀏覽時，從資料庫讀出內容，與主題風格合併後，傳送給使用者。所以你在github上面只能將內容與主題一起編輯，並放在一個HTML文件中。</p>
-<p>而這時候產生了一個問題，你可能有上百篇文章，這些都是一個個散落的html文件，當你想在這些頁面增加一個留言功能，或做其他修改時，你必須全部都改一遍，實在太麻煩了，因此我們需要把實際內容(文章、圖片)抽取出來，在製作好我們想要的外殼(風格)，最後把他們整合在一起就完成了!這樣當你想換個主題或增加減少一些功能時，只需要編輯主題資料夾的內容就行了。以下將介紹一種幫助我們完成此功能的工具。</p>
-<h2 id="Hexo-框架"><a href="#Hexo-框架" class="headerlink" title="Hexo 框架"></a>Hexo 框架</h2><p>Hexo是流行的靜態網站生成框架，它被廣泛用於寫網誌和建立個人網站。Hexo 的主要目標是使網站生成變得簡單且高效，同時提供了豐富的主題和插件，以滿足不同的需求。以下包含了Hexo框架的一些特點：</p>
+  <p>接上回，我們討論了一些量子閘。現在我們將說明如何使用這些閘。</p>
+<h2 id="Hadamard-Gate"><a href="#Hadamard-Gate" class="headerlink" title="Hadamard Gate:"></a>Hadamard Gate:</h2><p><img src="/images/post_quantum2/hgate_ex1.jpg" alt="把經典位元變成量子位元！"></p>
+<p>它是量子計算中最重要的量子閘！他能讓 [0,1]ᵀ 進入量子態！讓該量子位元有崩潰到0或1的機會，且機率各為50%。這作用就像你把一個固執的人變成一個隨性的人。</p>
+<p>為什麼H閘矩陣的右下項是負數？<br><img src="/images/post_quantum2/hgate_ex2.jpg" alt="將 qbit 0 放入閘中"></p>
+<p>讓我們將量子位元 [1,0]ᵀ 放入 H閘，然後得到一個沒有負參數的結果。所以我們可以區分結果是由 [1,0]ᵀ 或 [0,1]ᵀ 形成的！這意味著Hadamard門是可逆的！這就像你可以把水變成冰或蒸汽一樣。並且所有的閘操作都是可逆的，因為數學推導的結果，且保留更多的信息有利於進一步的操作！<br><img src="/images/post_quantum2/hgate_reversible.jpg" alt="H閘是可逆的"></p>
+<h2 id="Pauli-X-Gate"><a href="#Pauli-X-Gate" class="headerlink" title="Pauli-X Gate:"></a>Pauli-X Gate:</h2><p>很簡單，就是把qbit倒過來！<br><img src="/images/post_quantum2/xgate_ex1.jpg" alt="X gate 運算"></p>
+<h2 id="CNOT-Gate"><a href="#CNOT-Gate" class="headerlink" title="CNOT Gate:"></a>CNOT Gate:</h2><p>CNOT 閘作用於兩個 qbits 量子態，所以在使用之前。我們需要事先計算張量積！<br><img src="/images/post_quantum2/cnot_gate_ex1.jpg" alt="CNOT gate operation"></p>
+<p>現在我們需要討論一些特殊情況來觀察 CNOT閘屬性。因為它需要兩個輸入，所以我們將一個位定義為控制位元(Control bit)，另一個定義為目標位元(Target bit)。<br><img src="/images/post_quantum2/cnot_2.jpg" alt="控制和目標位元"></p>
+<p>通過觀察上述運算，我們發現當控制位為1時，CNOT門將翻轉目標位！ CNOT|10&gt; &#x3D; [0,0,0,1]ᵀ &#x3D; |11&gt;</p>
+<p>([0,0,0,1]ᵀ 可以分解為 [0,1]ᵀ 和 [0,1]ᵀ)</p>
+<p>類推得知 CNOT|11&gt; &#x3D; |10&gt;</p>
+<p>而當控制位為零時，輸入&#x3D;輸出。您可以嘗試驗證其結果！</p>
+<blockquote>
+<p>CNOT|00&gt; &#x3D; |00&gt; CNOT|01&gt; &#x3D; |01&gt;</p>
+</blockquote>
+<p>還有很多量子閘，如: 泡利-Z閘、泡利-Y閘和Toffoli 閘。您可以在IBM 文檔找到更多信息。最後，我們介紹了以上三個量子門，接下來通過使用這些門，我們可以解決一個量子世界中最簡單的問題了！</p>
+<h2 id="The-Deutsch’s-Problem"><a href="#The-Deutsch’s-Problem" class="headerlink" title="The Deutsch’s Problem:"></a>The Deutsch’s Problem:</h2><p>David Elieser Deutsch 是牛津大學的物理學家和教授。除此之外，他是量子計算的先驅，並且是該問題的提出者。</p>
+<p>想像一下，您有一台可以幫吐司塗奶油或去除土司上奶油的機器。且它只有四種工作模式。<br><img src="/images/post_quantum2/machine_4modes.jpg" alt="機器 4 種模式"></p>
 <ol>
-<li><p>靜態網站生成： Hexo 是一個靜態網站生成器，這意味著它將你的內容轉換成純HTML、CSS和JavaScript，使你的網站在瀏覽器中運行時不需要伺服器端處理。這提高了網站的性能和安全性。</p>
-</li>
-<li><p>Markdown 支援： Hexo支援Markdown，這是一種簡單且易於閱讀和編寫的標記語言。你可以使用Markdown編寫文章，Hexo會自動將其轉換為HTML。</p>
-</li>
-<li><p>多種主題： Hexo社群提供了許多免費和付費的主題，你可以輕鬆地為你的網站選擇一個合適的主題。這些主題通常有自定義設置，可以使你的網站更具特色。</p>
-</li>
-<li><p>插件擴展： Hexo允許你使用插件來擴展其功能。這些插件可以用於添加社交媒體分享按鈕、生成網站地圖、流量統計等。你還可以編寫自己的自定義插件。</p>
-</li>
-<li><p>版本控制和部署： 由於Hexo生成的網站是純靜態的，你可以使用版本控制系統（如Git）來管理網站的內容，並輕鬆部署到不同的主機或網站托管平台。</p>
-</li>
+<li>對於你放入的吐司什麼都不做便送出。（不做事模式）</li>
+<li>在吐司上塗奶油，若已塗了則不用。 （常數 1 模式）</li>
+<li>將吐司上的奶油去除，若沒有奶油則不做事。 （常數 0 模式）</li>
+<li>如果吐司塗了奶油，去掉奶油。如果吐司沒有塗奶油，那就塗奶油。 （反向模式）</li>
 </ol>
-<h3 id="Hexo目錄架構"><a href="#Hexo目錄架構" class="headerlink" title="Hexo目錄架構"></a>Hexo目錄架構</h3><h3 id="Install-Hexo-in-Windows"><a href="#Install-Hexo-in-Windows" class="headerlink" title="Install Hexo in Windows"></a>Install Hexo in Windows</h3><ol>
-<li><p>Hexo是基於Node.js開發的，首先我們要安裝Node.js，請於<a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a> 下載。</p>
-</li>
-<li><p>接著安裝Git，這邊利用Git來管理主題和插件，<a target="_blank" rel="noopener" href="https://git-scm.com/%E4%B8%8B%E8%BC%89%E3%80%82">https://git-scm.com/下載。</a></p>
-</li>
-<li><p>最後安裝Hexo，按下(Win+r)，輸入cmd打開命令提示符或PowerShell，並執行以下命令安裝 Hexo。 npm install -g hexo-cli</p>
-</li>
-<li><p>初始化 Hexo 網站： 在你想要創建 Hexo 網站的目錄下，運行以下命令來初始化一個新的 Hexo 網站：<br>hexo init myblog<br>這將在一個名為 “myblog” 的目錄中初始化一個新的 Hexo 網站。</p>
-</li>
-<li><p>進入你的 Hexo 網站目錄：cd myblog</p>
-</li>
-<li><p>安裝依賴項： 在你的 Hexo 網站目錄下，運行以下命令來安裝所需的依賴項：  npm install</p>
-</li>
-</ol>
-<h2 id="創建新頁面"><a href="#創建新頁面" class="headerlink" title="創建新頁面"></a>創建新頁面</h2><p>hexo new post [post_name]</p>
-<h2 id="md檔案撰寫"><a href="#md檔案撰寫" class="headerlink" title="md檔案撰寫"></a>md檔案撰寫</h2><p>想在Hexo中寫文章，必須使用mark down語法，其文件副檔名為 “.md”。<br>鑑於網路上已非常多相關教學文章，關於mark down語法，這邊就不再贅述。</p>
-<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><h5 id="if-meet-problem-gt-https-israynotarray-com-other-20200510-1067127387"><a href="#if-meet-problem-gt-https-israynotarray-com-other-20200510-1067127387" class="headerlink" title="if meet problem -&gt; https://israynotarray.com/other/20200510/1067127387/"></a>if meet problem -&gt; <a target="_blank" rel="noopener" href="https://israynotarray.com/other/20200510/1067127387/">https://israynotarray.com/other/20200510/1067127387/</a></h5><p>生成網站內容： hexo generate</p>
-<p>hexo server 或 hexo s<br>之後開啟瀏覽器，貼上連結，開始參觀自己的網站啦。</p>
-<h2 id="主題更換"><a href="#主題更換" class="headerlink" title="主題更換"></a>主題更換</h2><p>在github中搜尋hexo theme，挑選喜歡的主題，將之下載並放置於themes資料夾之中<br>修改_config.yml 使網頁變成自己喜歡的樣子</p>
-<h2 id="插件安裝"><a href="#插件安裝" class="headerlink" title="插件安裝"></a>插件安裝</h2><p>一鍵部屬:<br>npm install –save hexo-deployer-git<br>搜索功能:<br>npm install hexo-generator-search –save<br>npm install hexo-generator-searchdb –save</p>
-<p>插件皆須要修改根目錄下的_config.yml方可使用。</p>
-<h2 id="備份源碼"><a href="#備份源碼" class="headerlink" title="備份源碼"></a>備份源碼</h2><p>當一切都正常運作後，你希望在其他電腦上也能編輯文章，並且部署到github上，所以你必須複製整個hexo專案資料夾到另一台電腦上，這時你的源碼分岔出了兩個版本，一個是在你原本的電腦上，一個是你新複製的。你要讓兩個資料夾同步又挺麻煩的，要複製來複製去的，不如我們利用github上本來就有的功能，用push、pull的方式在本地端上傳與更新源碼，這樣我們github.io的網站就需要兩個repo來管理了，一個是本來就用來放靜態文件內容的xxx.github.io repo，另一個則是用來放整個hexo專案的source repo。</p>
-<h2 id="一次到位"><a href="#一次到位" class="headerlink" title="一次到位!"></a>一次到位!</h2><p>當你用git將你編輯過的文章或心血的文章上傳至source repo後，你還需要用hexo generate 一個public資料夾出來，並將之放置(hexo deploy)於本來就創建好的xxx.github.io repo。有沒有一鍵更新呢?</p>
-<h2 id="Appveyor-CI"><a href="#Appveyor-CI" class="headerlink" title="Appveyor (CI)"></a>Appveyor (CI)</h2><ul>
-<li>only free for public repo</li>
+<p>這時我們稱“常數1 模式”和“常數0 模式”為常數模式。 “不做事模式”和”反向模式”作為變量模式。</p>
+<p>有一天，控制面板壞了，所以你不知道它處於哪種模式。為了處理你的吐司，你需要使用一些測試來找出這台機器的模式。並且假設你只關心它是處於變量模式還是常數模式。</p>
+<h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><ul>
+<li>經典方法:<br>將沒塗奶油的吐司放入機器，如果你得到的吐司仍然沒有塗上奶油，則表示機器可能處於“常數 0 模式”（常數模式）或”不做事模式”（變量模式），所以需要再放入一個塗上奶油的吐司並測試結果。如果你得到沒塗奶油的吐司，這意味著它處於常數模式。否則，它處於變量模式。最後，你可以依靠兩步驟斷定機器的模式。</li>
 </ul>
-<h2 id="Big-picture-大框架"><a href="#Big-picture-大框架" class="headerlink" title="Big picture 大框架"></a>Big picture 大框架</h2><p> <img src="/" alt="big picture"></p>
+<p><img src="/images/post_quantum2/machine_test1.jpg" alt="Test 1"></p>
+<p><img src="/images/post_quantum2/machine_test2.jpg" alt="Test 2"></p>
+<pre><code>但無論如何安排，你都必須測試兩次才能確定其模式。
+</code></pre>
+<ul>
+<li>量子方法:</li>
+</ul>
+<p>首先，我們需要使用我們之前討論過的一些量子閘來構建吐司處理機器。</p>
+<p><img src="/images/post_quantum2/machine_test2.jpg" alt="Machine circuit"></p>
+<p>上圖是我們設計機器的方式。黑框代表狀態未知的機器。左側的輸入可放入吐司，而左側的輸出是|0&gt; (實際為輸入，只是命名問題) 。右側的吐司輸出是我們所關心的。為什麼我們不能只使用一條輸入和一條輸出線呢？因為它會使操作不可逆（常數函數會導致信息丟失，造成你不能將輸出轉換為輸入），為了符合所有的操作都是可逆的規則，因此構建該量子計算機需要兩條線。</p>
+<p>constant mode<br>第一種是常數0模式，最簡單的一種，直接將|0&gt;輸入輸出，而常數1模式只需要X閘，使之恆定輸出|1&gt;。</p>
+<p>variable mode<br>那麼”不做事模式”意味著輸出等於input輸入。我們可以在這裡使用 CNOT 閘。當左側輸入（控制位）為|1&gt; 時，CNOT 門將翻轉目標位，因此右側輸出將為|1&gt;。而當左側輸入為|0&gt;時，目標位沒有被修改，所以右輸出為|0&gt;。</p>
+<p>這就是該機器的 4 種模式在量子世界中的工作方式。最後一個問題是我們如何只用一個查詢（測試）來區分常數模式和變量模式！</p>
+<p>我們應該做什麼？如果量子位元不在量子疊加態，我們需要在量子計算機中進行兩次查詢。所以我們應該在這台機器上安裝額外的量子閘。使我們可以利用量子態的疊加來加速查詢過程！</p>
+<p>Final circuit<br>記住！我們使用 Hadamard 閘使量子位元進入到疊加態。如你所見，我們在黑盒子（該模式未知的機器）的左側添加了兩個 H 門。這是關鍵部分，就好像你啟用並行計算一樣！黑盒處理後，再次使用H門，破壞量子位元的疊加態，並測出數值(M代表測量)。最後，你會得到兩種output，0或1，分別代表了黑盒是處於常數模式或變量模式中。</p>
+<p>驗算1:</p>
+<p>假設黑盒是處於不做事模式，並預設輸入都是|0&gt;，上下量子位元經過X閘後都變成了|1&gt;，再經過H閘後，變成了[1&#x2F;√2 , -1&#x2F;√2]ᵀ，接著將兩個量子位元做CNOT，得右上的輸出為，CNOT( 1&#x2F;2[1,-1,-1,1]ᵀ ) &#x3D; 1&#x2F;2[1,-1,1,-1]ᵀ &#x3D; [1&#x2F;√2 , 1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2 , -1&#x2F;√2]ᵀ ，接著用H閘使之失去疊加態，得[1, 0]ᵀ, [0, 1]ᵀ ，最後結果為|01&gt;。</p>
+<p>你可以通過將input指定為 |0&gt; 來計算結果，並嘗試機器內其他3種可能的工作模式，以得到最後觀察的結果。最後，我們展示了量子計算機如何在該問題上勝過經典計算機。若將此問題推廣，可以輸入n個量子比特，且機器有2^n種狀態，使用量子計算可以獲得指數倍的加速!</p>
  
       <!-- reward -->
       
@@ -219,28 +221,22 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/25/server/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/10/25/quantum2/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/" rel="tag">server</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2023/09/10/quantun_m/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            量子計算-首部曲1
-          
-        </div>
-      </a>
     
+      <a href="/2023/09/10/quantun_m/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">量子計算-首部曲1</div>
+      </a>
     
   </nav>
 
