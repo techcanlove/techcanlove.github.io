@@ -1,195 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Free blog server</title>
-    <url>/2023/03/25/server/</url>
-    <content><![CDATA[<h2 id="Big-picture-大框架"><a href="#Big-picture-大框架" class="headerlink" title="Big picture 大框架"></a>Big picture 大框架</h2><p> <img src="/images/hexo_blog_bigPic.png" alt="架構圖1"></p>
-<ul>
-<li>在local端寫作與生成網頁，接著將網頁託管與備份原始文件在Github.io上，免去了維護服務器的功夫!</li>
-</ul>
-<h2 id="想寫部落格"><a href="#想寫部落格" class="headerlink" title="想寫部落格"></a>想寫部落格</h2><p>如果你想在網上寫部落格，租個服務器架wordpress，或是直接用別人搭建好的服務，如medium、Pixnet、其他社群媒體等。皆是非常方便的，但使用別人架設好的服務，你無法自己設計版面，大家都是一樣的，而使用自行架站的方式，雖然可以使用自己喜歡的框架，選擇自己喜歡的主題設計，但免不了要付一筆租借服務器的費用。有沒有類似wordpress的網站框架，又不用租借服務器的方法呢?</p>
-<h2 id="Github-io"><a href="#Github-io" class="headerlink" title="Github.io"></a>Github.io</h2><p>前面提到，要架設一個部落格，總是需要一個主機，或者說服務器，而github網站上剛好就提供這樣子的免費服務。github是一個大型的代碼聚集地，你可以把自己的程式碼上傳至該網站，與他人共同編輯。而你所要展示的部落格其實也是由一堆html、css、js程式碼組成的，你只需要將這些程式碼放在該網站上即可。</p>
-<p>然而，該網站只能幫你展示靜態的html文件，無法整合資料庫的操作，所以你無法像wordpress一樣，把內容抽離出來放在資料庫，當有人要瀏覽時，從資料庫讀出內容，與主題風格合併後，傳送給使用者。所以你在github上面只能將內容與主題一起編輯，並放在一個HTML文件中。</p>
-<p>而這時候產生了一個問題，你可能有上百篇文章，這些都是一個個散落的html文件，當你想在這些頁面增加一個留言功能，或做其他修改時，你必須全部都改一遍，實在太麻煩了，因此我們需要把實際內容(文章、圖片)抽取出來，在製作好我們想要的外殼(風格)，最後把他們整合在一起就完成了!這樣當你想換個主題或增加減少一些功能時，只需要編輯主題資料夾的內容就行了。以下將介紹一種幫助我們完成此功能的工具。</p>
-<h2 id="Hexo-框架"><a href="#Hexo-框架" class="headerlink" title="Hexo 框架"></a>Hexo 框架</h2><p>Hexo是流行的靜態網站生成框架，它被廣泛用於寫網誌和建立個人網站。Hexo 的主要目標是使網站生成變得簡單且高效，同時提供了豐富的主題和插件，以滿足不同的需求。以下包含了Hexo框架的一些特點：</p>
-<ol>
-<li><p>靜態網站生成： Hexo 是一個靜態網站生成器，這意味著它將你的內容轉換成純HTML、CSS和JavaScript，使你的網站在瀏覽器中運行時不需要伺服器端處理。這提高了網站的性能和安全性。</p>
-</li>
-<li><p>Markdown 支援： Hexo支援Markdown，這是一種簡單且易於閱讀和編寫的標記語言。你可以使用Markdown編寫文章，Hexo會自動將其轉換為HTML。</p>
-</li>
-<li><p>多種主題： Hexo社群提供了許多免費和付費的主題，你可以輕鬆地為你的網站選擇一個合適的主題。這些主題通常有自定義設置，可以使你的網站更具特色。</p>
-</li>
-<li><p>插件擴展： Hexo允許你使用插件來擴展其功能。這些插件可以用於添加社交媒體分享按鈕、生成網站地圖、流量統計等。你還可以編寫自己的自定義插件。</p>
-</li>
-<li><p>版本控制和部署： 由於Hexo生成的網站是純靜態的，你可以使用版本控制系統（如Git）來管理網站的內容，並輕鬆部署到不同的主機或網站托管平台。</p>
-</li>
-</ol>
-<h3 id="Hexo目錄架構"><a href="#Hexo目錄架構" class="headerlink" title="Hexo目錄架構"></a>Hexo目錄架構</h3><ul>
-<li>source folder<ul>
-<li>存放網頁md文件(實際內容)</li>
-</ul>
-</li>
-<li>themes folder<ul>
-<li>存放網頁主題風格的資料夾</li>
-</ul>
-</li>
-<li>public folder<ul>
-<li>當執行Hexo generate後，將會生成該資料夾，裡面為生成後的網站內容，可以用Hexo deploy將之上傳到github.io</li>
-</ul>
-</li>
-<li>scaffold<ul>
-<li>網頁post、about頁面模板</li>
-</ul>
-</li>
-<li>_config.yml<ul>
-<li>Hexo 設定檔</li>
-</ul>
-</li>
-</ul>
-<h3 id="Install-Hexo-in-Windows"><a href="#Install-Hexo-in-Windows" class="headerlink" title="Install Hexo in Windows"></a>Install Hexo in Windows</h3><ol>
-<li><p>Hexo是基於Node.js開發的，首先我們要安裝Node.js，請於<a href="https://nodejs.org/">https://nodejs.org/</a> 下載。</p>
-</li>
-<li><p>接著安裝Git，這邊利用Git來管理主題和插件，<a href="https://git-scm.com/%E4%B8%8B%E8%BC%89%E3%80%82">https://git-scm.com/下載。</a></p>
-</li>
-<li><p>最後安裝Hexo，按下(Win+r)，輸入cmd打開命令提示符或PowerShell，並執行以下命令安裝 Hexo。 npm install -g hexo-cli</p>
-</li>
-<li><p>初始化 Hexo 網站： 在你想要創建 Hexo 網站的目錄下，運行以下命令來初始化一個新的 Hexo 網站：<br>hexo init myblog<br>這將在一個名為 “myblog” 的目錄中初始化一個新的 Hexo 網站。</p>
-</li>
-<li><p>進入你的 Hexo 網站目錄：cd myblog</p>
-</li>
-<li><p>安裝依賴項： 在你的 Hexo 網站目錄下，運行以下命令來安裝所需的依賴項：  npm install</p>
-</li>
-</ol>
-<ul>
-<li>若執行Hexo遇到權限問題 -&gt; <a href="https://israynotarray.com/other/20200510/1067127387/">https://israynotarray.com/other/20200510/1067127387/</a></li>
-</ul>
-<h2 id="Hexo-使用方法"><a href="#Hexo-使用方法" class="headerlink" title="Hexo 使用方法"></a>Hexo 使用方法</h2><ul>
-<li><p>創建新頁面<br>hexo new post [post_name]</p>
-</li>
-<li><p>md檔案撰寫</p>
-<ul>
-<li>想在Hexo中寫文章，必須使用mark down語法，其文件副檔名為 “.md”。<br>鑑於網路上已非常多相關教學文章，關於mark down語法，這邊就不再贅述。</li>
-</ul>
-</li>
-<li><p>生成public靜態網站<br>hexo generate</p>
-</li>
-<li><p>預覽<br>hexo server 或 hexo s<br>之後開啟瀏覽器，貼上連結，開始參觀自己的網站啦。</p>
-</li>
-</ul>
-<h2 id="主題更換"><a href="#主題更換" class="headerlink" title="主題更換"></a>主題更換</h2><p>在github中搜尋hexo theme，挑選喜歡的主題，將之下載並放置於themes資料夾之中<br>修改_config.yml 使網頁變成自己喜歡的樣子</p>
-<h2 id="插件安裝"><a href="#插件安裝" class="headerlink" title="插件安裝"></a>插件安裝</h2><p>一鍵部屬:<br>npm install –save hexo-deployer-git<br>搜索功能:<br>npm install hexo-generator-search –save<br>npm install hexo-generator-searchdb –save</p>
-<p>插件皆須要修改根目錄下的_config.yml方可使用，通常github中的hexo theme會有對應的config可以參考修改。</p>
-<h2 id="備份源碼"><a href="#備份源碼" class="headerlink" title="備份源碼"></a>備份源碼</h2><p>當一切都正常運作後，你希望在其他電腦上也能編輯文章，並且部署到github上，所以你必須複製整個hexo專案資料夾到另一台電腦上，這時你的源碼分岔出了兩個版本，一個是在你原本的電腦上，一個是你新複製的。你要讓兩個資料夾同步又挺麻煩的，要複製來複製去的，不如我們利用github上本來就有的功能，用push、pull的方式在本地端上傳與更新源碼，這樣我們github.io的網站就需要兩個repo來管理了，一個是本來就用來放靜態文件內容的xxx.github.io repo，另一個則是用來放整個hexo專案的source repo。</p>
-<h2 id="一次到位"><a href="#一次到位" class="headerlink" title="一次到位!"></a>一次到位!</h2><p>當你用git將你編輯過的文章或心血的文章上傳至source repo後，你還需要用hexo generate 一個public資料夾出來，並將之放置(hexo deploy)於本來就創建好的xxx.github.io repo。有沒有一鍵更新呢?<br>我們可以使用Appveyor、或其他(CI)工具即可完成。然而這些其實也還是有點殺雞用牛刀的感覺，因為我們並不用自動測試等後續流程，所以自己寫個batch來完成這些事即可。</p>
-]]></content>
-      <tags>
-        <tag>server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>量子計算-首部曲1</title>
-    <url>/2023/09/10/quantun_m/</url>
-    <content><![CDATA[<p>某天，華生邀請了一個女生出去玩，但女生拒絕了他。 剎那，他的自信心下降到零。 然而，那僅僅是因為女生在那天剛好有事要忙，無法前往而已。幾天過後，ding!! 華生的手機傳來訊息，女生主動向華生提議傍晚去公園散步。哈! 一抹笑意自華生的嘴角溢出，就在這一瞬間，他的自信沖天而起！</p>
-<p><img src="/images/post1/girl_boy_bits.jpg" alt="對於對方的心理狀態"></p>
-<p>多麼戲劇化的人啊！ 由於某種原因，華生的性格總是處於極端狀態。例如，當你問他餓不餓時，他只會回答 “餓死了”或“撐死了”。 而我們的任務就是嘗試了解華生的內心狀態，並想辦法勾勒出一些藍圖！</p>
-<p><img src="/images/post1/bit_01.jpg" alt="傳統位元"></p>
-<p><img src="/images/post1/q_bit.jpg" alt="量子位元 (wiki)"></p>
-<p>從這個思路往下走，假設增加一些概率來描述華生的信心怎麼樣？ 原本， 我們利用傳統比特，也就是0或1來描述華生的自信程度，1代表自信飛天，0代表無自信。這時回想一下薛丁格的貓，貓在毒氣箱子時，貓處於生與死的疊加態。以線性代數來說，貓的狀態 &#x3D; (波函數1)<em>(死亡) + (波函數2)</em>(生存)，為生存與死亡的某種組合疊加，以顏色來說，若活著是白色，死亡是黑色，則這隻貓處於一種不斷變化的灰色狀態。</p>
-<p>回到華生的信心值，0 或 1，用疊加態來表示，得 (波函數1)<em>(0%信心) + (波函數2)</em>(100%信心) &#x3D; 華生的信心值。由於觀察華生後，只能發現兩種極端的結果，所以這兩種狀況發生的機率總和為1，這裡出現了第一個限制，由於波函數的機率值 &#x3D; || 波函數 ||² &#x3D; || Ψ ||² ，且因為有兩個波函數，所以最後的限制式為， || Ψ₁ ||² +|| Ψ₂ ||² &#x3D;1 。有了這個規則後，可以類推所謂的量子位元是什麼。</p>
-<p>首先，我們定義一個向量 [a,b]ᵀ 來描述單個 qbit（量子位元）。 並添加上述的規則，其中a、b皆為波函數。</p>
-<blockquote>
-<p>規則：a 和 b 是複數。 且 ||a||² + ||b||² &#x3D; 1</p>
-</blockquote>
-<p>例如：一個量子位元可以表示為 [1&#x2F;√2,1&#x2F;√2]ᵀ 或 [-1,0]ᵀ 或 [√2&#x2F;√3,-1&#x2F;√3]ᵀ 。</p>
-<p>現在回到華生的信心狀態。 如果我們將其描述為一個量子位元&#x3D; [1&#x2F;√2,1&#x2F;√2]ᵀ，這意味著當我們詢問華生時，我們有 50% 的機會發現他自信心爆棚，以及50%機會發現他毫無自信。(其中 (1&#x2F;√2)²&#x3D;1&#x2F;2&#x3D;0.5)</p>
-<p>這就是量子力學的運作原理！ 當你觀察它時，它會有某種機率崩潰成某種狀態！ 我們可以通過計算波函數獲得其機率！</p>
-<p>現在我們嘗試用量子位元的形式來描述一個經典的位元(傳統位元)。</p>
-<p>經典位元 1&#x3D;[0,1]ᵀ 量子位元。 因為 [0,1]ᵀ 有 100% 的機率塌陷為 1。</p>
-<p>經典位元 0&#x3D;[1,0]ᵀ 量子位元。 因為 [1,0]ᵀ 有 100% 的機率塌陷為 0。</p>
-<h2 id="張量積"><a href="#張量積" class="headerlink" title="張量積"></a>張量積</h2><p>而如何表示兩個量子位元的系統？ 它們可以用兩個單一位元的“張量積”(tensor product)來表示！</p>
-<blockquote>
-<p>張量積([a,b]ᵀ , [c,d]ᵀ) 定義為 [a*[c,d]ᵀ , b*[c,d]ᵀ ]ᵀ &#x3D; [ac,ad,bc,bd]ᵀ &#x3D; [a,b]ᵀ ⊗ [c,d]ᵀ</p>
-</blockquote>
-<p>所以，[1&#x2F;√2,1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2,1&#x2F;√2]ᵀ &#x3D; [1&#x2F;2, 1&#x2F;2, 1&#x2F;2, 1&#x2F;2]ᵀ。 因此，當你觀察這兩個量子位元時，你分別有1&#x2F;4的機率觀察到 00、01、10、11。<br>（因為（1&#x2F;2）²&#x3D;1&#x2F;4&#x3D;0.25）</p>
-<p>我們將使用一些符號以方便表示。(我們使用實數 1 和 0 來簡化問題！）</p>
-<p>|01&gt; &#x3D; [1,0]ᵀ ⊗ [0,1]ᵀ &#x3D; [0,1,0,0]ᵀ</p>
-<p>|101&gt; &#x3D; |5&gt; &#x3D; [0,1]ᵀ ⊗ [1,0]ᵀ ⊗ [0,1]ᵀ&#x3D; [0,1]ᵀ ⊗ [0,1,0,0]ᵀ &#x3D; [0,0,0,1,0,0,0,0]ᵀ</p>
-<p>哇！它呈指數增長。當我們需要描述 10 個 qbits 系統時，它需要 2¹⁰ 個複數！</p>
-<p>不過為什麼要使用張量積呢？</p>
-<p><img src="/images/post1/why_tensor_p.jpg" alt="示例 1"></p>
-<p>想像某天華生和他的女朋友出去玩了，他（偷偷地）把女朋友的行為看作是兩個量子比特！一個 qbit 記錄購買蛋糕的概率。還有一個記錄了買衣服的概率。同樣，如果我們要表示 2 個 qbit，我們需要知道其狀態坍塌到 00、01、10 和 11 的機率。所以我們需要計算張量積來獲得組合機率！</p>
-<p>根據示例 1，華生的女朋友有 0.54 的機會崩潰成 “11” 狀態，這意味著她買了兩件東西！她有 0.04 的機會崩潰至 “00”，這意味著沒買任何東西！</p>
-<h2 id="糾纏態"><a href="#糾纏態" class="headerlink" title="糾纏態"></a>糾纏態</h2><p>如果我們不能分解兩個 qbits 的乘積狀態，那麼它們就是糾纏的！</p>
-<p>例如：[a,b]ᵀ ⊗ [c,d]ᵀ &#x3D; [ac,ad,bc,bd]ᵀ &#x3D; [1&#x2F;√2,0,0,1&#x2F;√2]ᵀ ，其中 ac &#x3D; 1&#x2F;√2，ad &#x3D; 0，bc &#x3D; 0，bd &#x3D; 1&#x2F;√2</p>
-<p>如果 ad &#x3D; 0，則 a 或 d 至少有一個是0，但是 ac不等於0，所以 a不等於0，接著 bd不等於0，所以 d不等於0，現在我們陷入了矛​​盾，所以該函數無法被分解。</p>
-<p>注意！量子態 [1&#x2F;√2,0,0,1&#x2F;√2]ᵀ 有 0.5 機率塌陷到 |00&gt; 和 0.5 機率塌陷到 |11&gt;。所當你觀察其中一個 qbit 時，它會連帶另一個量子位元塌縮成 “00”或“11”！這就是為什麼不論他們離多遠，你可以立即知道另一個 qbit 狀態的原因！</p>
-<h2 id="操縱量子比特、量子閘門"><a href="#操縱量子比特、量子閘門" class="headerlink" title="操縱量子比特、量子閘門"></a>操縱量子比特、量子閘門</h2><p>回顧經典計算機，它們是由許多邏輯閘組成的，例如AND、XOR、OR、NOT……。但是在量子世界中，我們不能再使用“邏輯”門了，因為像零或一這樣的“邏輯”是不存在的，除非通過觀察量子比特，並使它們崩潰。</p>
-<p>以經典方式使用量子計算機是很浪費其潛力的。所以我們需要找到另一種方法可以對量子位元進行操作，並在得到結果之前保持它們不會崩潰！ 因此我們將所有運算核心定義成(N*N)矩陣，(其中N&#x3D;2^n, n&#x3D;1,2,3… )，而所有閘門就是矩陣，利用矩陣乘法，我們將可完成針對某量子位元的操作。</p>
-<p>CNOT閘： 在兩個 qbits 量子態上使用。<br><img src="/images/post1/cnot.jpg" alt="CNOT 矩陣"></p>
-<p>Hadamard 閘: 在單個 qbit 上使用。<br><img src="/images/post1/h_gate.gif" alt="哈達瑪 矩陣"></p>
-<p>X 閘： 在單個 qbit 上使用。<br><img src="/images/post1/bit_flip.jpg" alt="翻轉 矩陣"></p>
-<p>下一篇將闡述這些量子閘的用法。</p>
-]]></content>
-      <tags>
-        <tag>quantum computing</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>量子計算-首部曲2</title>
-    <url>/2023/10/25/quantum2/</url>
-    <content><![CDATA[<p>接上回，我們討論了一些量子閘。現在我們將說明如何使用這些閘。</p>
-<h2 id="Hadamard-Gate"><a href="#Hadamard-Gate" class="headerlink" title="Hadamard Gate:"></a>Hadamard Gate:</h2><p><img src="/images/post_quantum2/hgate_ex1.jpg" alt="把經典位元變成量子位元！"></p>
-<p>它是量子計算中最重要的量子閘！他能讓 [0,1]ᵀ 進入量子態！讓該量子位元有崩潰到0或1的機會，且機率各為50%。這作用就像你把一個固執的人變成一個隨性的人。</p>
-<p>為什麼H閘矩陣的右下項是負數？<br><img src="/images/post_quantum2/hgate_ex2.jpg" alt="將 qbit 0 放入閘中"></p>
-<p>讓我們將量子位元 [1,0]ᵀ 放入 H閘，然後得到一個沒有負參數的結果。所以我們可以區分結果是由 [1,0]ᵀ 或 [0,1]ᵀ 形成的！這意味著Hadamard門是可逆的！這就像你可以把水變成冰或蒸汽一樣。並且所有的閘操作都是可逆的，因為數學推導的結果，且保留更多的信息有利於進一步的操作！<br><img src="/images/post_quantum2/hgate_reversible.jpg" alt="H閘是可逆的"></p>
-<h2 id="Pauli-X-Gate"><a href="#Pauli-X-Gate" class="headerlink" title="Pauli-X Gate:"></a>Pauli-X Gate:</h2><p>很簡單，就是把qbit倒過來！<br><img src="/images/post_quantum2/xgate_ex1.jpg" alt="X gate 運算"></p>
-<h2 id="CNOT-Gate"><a href="#CNOT-Gate" class="headerlink" title="CNOT Gate:"></a>CNOT Gate:</h2><p>CNOT 閘作用於兩個 qbits 量子態，所以在使用之前。我們需要事先計算張量積！<br><img src="/images/post_quantum2/cnot_gate_ex1.jpg" alt="CNOT gate operation"></p>
-<p>現在我們需要討論一些特殊情況來觀察 CNOT閘屬性。因為它需要兩個輸入，所以我們將一個位定義為控制位元(Control bit)，另一個定義為目標位元(Target bit)。<br><img src="/images/post_quantum2/cnot_2.jpg" alt="控制和目標位元"></p>
-<p>通過觀察上述運算，我們發現當控制位為1時，CNOT門將翻轉目標位！ CNOT|10&gt; &#x3D; [0,0,0,1]ᵀ &#x3D; |11&gt;</p>
-<p>([0,0,0,1]ᵀ 可以分解為 [0,1]ᵀ 和 [0,1]ᵀ)</p>
-<p>類推得知 CNOT|11&gt; &#x3D; |10&gt;</p>
-<p>而當控制位為零時，輸入&#x3D;輸出。您可以嘗試驗證其結果！</p>
-<blockquote>
-<p>CNOT|00&gt; &#x3D; |00&gt; CNOT|01&gt; &#x3D; |01&gt;</p>
-</blockquote>
-<p>還有很多量子閘，如: 泡利-Z閘、泡利-Y閘和Toffoli 閘。您可以在IBM 文檔找到更多信息。最後，我們介紹了以上三個量子門，接下來通過使用這些門，我們可以解決一個量子世界中最簡單的問題了！</p>
-<h2 id="The-Deutsch’s-Problem"><a href="#The-Deutsch’s-Problem" class="headerlink" title="The Deutsch’s Problem:"></a>The Deutsch’s Problem:</h2><p>David Elieser Deutsch 是牛津大學的物理學家和教授。除此之外，他是量子計算的先驅，並且是該問題的提出者。</p>
-<p>想像一下，您有一台可以幫吐司塗奶油或去除土司上奶油的機器。且它只有四種工作模式。<br><img src="/images/post_quantum2/machine_4modes.jpg" alt="機器 4 種模式"></p>
-<ol>
-<li>對於你放入的吐司什麼都不做便送出。（不做事模式）</li>
-<li>在吐司上塗奶油，若已塗了則不用。 （常數 1 模式）</li>
-<li>將吐司上的奶油去除，若沒有奶油則不做事。 （常數 0 模式）</li>
-<li>如果吐司塗了奶油，去掉奶油。如果吐司沒有塗奶油，那就塗奶油。 （反向模式）</li>
-</ol>
-<p>這時我們稱“常數1 模式”和“常數0 模式”為常數模式。 “不做事模式”和”反向模式”作為變量模式。</p>
-<p>有一天，控制面板壞了，所以你不知道它處於哪種模式。為了處理你的吐司，你需要使用一些測試來找出這台機器的模式。並且假設你只關心它是處於變量模式還是常數模式。</p>
-<h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><ul>
-<li>經典方法:<br>將沒塗奶油的吐司放入機器，如果你得到的吐司仍然沒有塗上奶油，則表示機器可能處於“常數 0 模式”（常數模式）或”不做事模式”（變量模式），所以需要再放入一個塗上奶油的吐司並測試結果。如果你得到沒塗奶油的吐司，這意味著它處於常數模式。否則，它處於變量模式。最後，你可以依靠兩步驟斷定機器的模式。</li>
-</ul>
-<p><img src="/images/post_quantum2/machine_test1.jpg" alt="Test 1"></p>
-<p><img src="/images/post_quantum2/machine_test2.jpg" alt="Test 2"></p>
-<pre><code>但無論如何安排，你都必須測試兩次才能確定其模式。
-</code></pre>
-<ul>
-<li>量子方法:</li>
-</ul>
-<p>首先，我們需要使用我們之前討論過的一些量子閘來構建吐司處理機器。</p>
-<p><img src="/images/post_quantum2/machine_circuit.jpg" alt="Machine circuit"></p>
-<p>上圖是我們設計機器的方式。黑框代表狀態未知的機器。左側的輸入可放入吐司，而左側的輸出是|0&gt; (實際為輸入，只是命名問題) 。右側的吐司輸出是我們所關心的。為什麼我們不能只使用一條輸入和一條輸出線呢？因為它會使操作不可逆（常數函數會導致信息丟失，造成你不能將輸出轉換為輸入），為了符合所有的操作都是可逆的規則，因此構建該量子計算機需要兩條線。</p>
-<p><img src="/images/post_quantum2/machine_circuit_constant.jpg" alt="constant mode"></p>
-<p>第一種是常數0模式，最簡單的一種，直接將|0&gt;輸入輸出，而常數1模式只需要X閘，使之恆定輸出|1&gt;。</p>
-<p><img src="/images/post_quantum2/machine_circuit_var.jpg" alt="variable mode"></p>
-<p>那麼”不做事模式”意味著輸出等於input輸入。我們可以在這裡使用 CNOT 閘。當左側輸入（控制位）為|1&gt; 時，CNOT 門將翻轉目標位，因此右側輸出將為|1&gt;。而當左側輸入為|0&gt;時，目標位沒有被修改，所以右輸出為|0&gt;。</p>
-<p>這就是該機器的 4 種模式在量子世界中的工作方式。最後一個問題是我們如何只用一個查詢（測試）來區分常數模式和變量模式！</p>
-<p>我們應該做什麼？如果量子位元不在量子疊加態，我們需要在量子計算機中進行兩次查詢。所以我們應該在這台機器上安裝額外的量子閘。使我們可以利用量子態的疊加來加速查詢過程！</p>
-<p><img src="/images/post_quantum2/final_de_q1.jpg" alt="Final circuit"></p>
-<p>記住！我們使用 Hadamard 閘使量子位元進入到疊加態。如你所見，我們在黑盒子（該模式未知的機器）的左側添加了兩個 H 門。這是關鍵部分，就好像你啟用並行計算一樣！黑盒處理後，再次使用H門，破壞量子位元的疊加態，並測出數值(M代表測量)。最後，你會得到兩種output，0或1，分別代表了黑盒是處於常數模式或變量模式中。</p>
-<p>驗算1:</p>
-<p>假設黑盒是處於不做事模式，並預設輸入都是|0&gt;，上下量子位元經過X閘後都變成了|1&gt;，再經過H閘後，變成了[1&#x2F;√2 , -1&#x2F;√2]ᵀ，接著將兩個量子位元做CNOT，得右上的輸出為，CNOT( 1&#x2F;2[1,-1,-1,1]ᵀ ) &#x3D; 1&#x2F;2[1,-1,1,-1]ᵀ &#x3D; [1&#x2F;√2 , 1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2 , -1&#x2F;√2]ᵀ ，接著用H閘使之失去疊加態，得[1, 0]ᵀ, [0, 1]ᵀ ，最後結果為|01&gt;。</p>
-<p>你可以通過將input指定為 |0&gt; 來計算結果，並嘗試機器內其他3種可能的工作模式，以得到最後觀察的結果。最後，我們展示了量子計算機如何在該問題上勝過經典計算機。若將此問題推廣，可以輸入n個量子比特，且機器有2^n種狀態，使用量子計算可以獲得指數倍的加速!</p>
-]]></content>
-      <tags>
-        <tag>quantum computing</tag>
-      </tags>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>量子計算-首部曲2</title>
+      <link href="/2023/10/25/quantum2/"/>
+      <url>/2023/10/25/quantum2/</url>
+      
+        <content type="html"><![CDATA[<p>接上回，我們討論了一些量子閘。現在我們將說明如何使用這些閘。</p><h2 id="Hadamard-Gate"><a href="#Hadamard-Gate" class="headerlink" title="Hadamard Gate:"></a>Hadamard Gate:</h2><p><img src="/images/post_quantum2/hgate_ex1.jpg" alt="把經典位元變成量子位元！"></p><p>它是量子計算中最重要的量子閘！他能讓 [0,1]ᵀ 進入量子態！讓該量子位元有崩潰到0或1的機會，且機率各為50%。這作用就像你把一個固執的人變成一個隨性的人。</p><p>為什麼H閘矩陣的右下項是負數？<br><img src="/images/post_quantum2/hgate_ex2.jpg" alt="將 qbit 0 放入閘中"></p><p>讓我們將量子位元 [1,0]ᵀ 放入 H閘，然後得到一個沒有負參數的結果。所以我們可以區分結果是由 [1,0]ᵀ 或 [0,1]ᵀ 形成的！這意味著Hadamard門是可逆的！這就像你可以把水變成冰或蒸汽一樣。並且所有的閘操作都是可逆的，因為數學推導的結果，且保留更多的信息有利於進一步的操作！<br><img src="/images/post_quantum2/hgate_reversible.jpg" alt="H閘是可逆的"></p><h2 id="Pauli-X-Gate"><a href="#Pauli-X-Gate" class="headerlink" title="Pauli-X Gate:"></a>Pauli-X Gate:</h2><p>很簡單，就是把qbit倒過來！<br><img src="/images/post_quantum2/xgate_ex1.jpg" alt="X gate 運算"></p><h2 id="CNOT-Gate"><a href="#CNOT-Gate" class="headerlink" title="CNOT Gate:"></a>CNOT Gate:</h2><p>CNOT 閘作用於兩個 qbits 量子態，所以在使用之前。我們需要事先計算張量積！<br><img src="/images/post_quantum2/cnot_gate_ex1.jpg" alt="CNOT gate operation"></p><p>現在我們需要討論一些特殊情況來觀察 CNOT閘屬性。因為它需要兩個輸入，所以我們將一個位定義為控制位元(Control bit)，另一個定義為目標位元(Target bit)。<br><img src="/images/post_quantum2/cnot_2.jpg" alt="控制和目標位元"></p><p>通過觀察上述運算，我們發現當控制位為1時，CNOT門將翻轉目標位！ CNOT|10&gt; &#x3D; [0,0,0,1]ᵀ &#x3D; |11&gt;</p><p>([0,0,0,1]ᵀ 可以分解為 [0,1]ᵀ 和 [0,1]ᵀ)</p><p>類推得知 CNOT|11&gt; &#x3D; |10&gt;</p><p>而當控制位為零時，輸入&#x3D;輸出。您可以嘗試驗證其結果！</p><blockquote><p>CNOT|00&gt; &#x3D; |00&gt; CNOT|01&gt; &#x3D; |01&gt;</p></blockquote><p>還有很多量子閘，如: 泡利-Z閘、泡利-Y閘和Toffoli 閘。您可以在IBM 文檔找到更多信息。最後，我們介紹了以上三個量子門，接下來通過使用這些門，我們可以解決一個量子世界中最簡單的問題了！</p><h2 id="The-Deutsch’s-Problem"><a href="#The-Deutsch’s-Problem" class="headerlink" title="The Deutsch’s Problem:"></a>The Deutsch’s Problem:</h2><p>David Elieser Deutsch 是牛津大學的物理學家和教授。除此之外，他是量子計算的先驅，並且是該問題的提出者。</p><p>想像一下，您有一台可以幫吐司塗奶油或去除土司上奶油的機器。且它只有四種工作模式。<br><img src="/images/post_quantum2/machine_4modes.jpg" alt="機器 4 種模式"></p><ol><li>對於你放入的吐司什麼都不做便送出。（不做事模式）</li><li>在吐司上塗奶油，若已塗了則不用。 （常數 1 模式）</li><li>將吐司上的奶油去除，若沒有奶油則不做事。 （常數 0 模式）</li><li>如果吐司塗了奶油，去掉奶油。如果吐司沒有塗奶油，那就塗奶油。 （反向模式）</li></ol><p>這時我們稱“常數1 模式”和“常數0 模式”為常數模式。 “不做事模式”和”反向模式”作為變量模式。</p><p>有一天，控制面板壞了，所以你不知道它處於哪種模式。為了處理你的吐司，你需要使用一些測試來找出這台機器的模式。並且假設你只關心它是處於變量模式還是常數模式。</p><h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><ul><li>經典方法:<br>將沒塗奶油的吐司放入機器，如果你得到的吐司仍然沒有塗上奶油，則表示機器可能處於“常數 0 模式”（常數模式）或”不做事模式”（變量模式），所以需要再放入一個塗上奶油的吐司並測試結果。如果你得到沒塗奶油的吐司，這意味著它處於常數模式。否則，它處於變量模式。最後，你可以依靠兩步驟斷定機器的模式。</li></ul><p><img src="/images/post_quantum2/machine_test1.jpg" alt="Test 1"></p><p><img src="/images/post_quantum2/machine_test2.jpg" alt="Test 2"></p><pre><code>但無論如何安排，你都必須測試兩次才能確定其模式。</code></pre><ul><li>量子方法:</li></ul><p>首先，我們需要使用我們之前討論過的一些量子閘來構建吐司處理機器。</p><p><img src="/images/post_quantum2/machine_circuit.jpg" alt="Machine circuit"></p><p>上圖是我們設計機器的方式。黑框代表狀態未知的機器。左側的輸入可放入吐司，而左側的輸出是|0&gt; (實際為輸入，只是命名問題) 。右側的吐司輸出是我們所關心的。為什麼我們不能只使用一條輸入和一條輸出線呢？因為它會使操作不可逆（常數函數會導致信息丟失，造成你不能將輸出轉換為輸入），為了符合所有的操作都是可逆的規則，因此構建該量子計算機需要兩條線。</p><p><img src="/images/post_quantum2/machine_circuit_constant.jpg" alt="constant mode"></p><p>第一種是常數0模式，最簡單的一種，直接將|0&gt;輸入輸出，而常數1模式只需要X閘，使之恆定輸出|1&gt;。</p><p><img src="/images/post_quantum2/machine_circuit_var.jpg" alt="variable mode"></p><p>那麼”不做事模式”意味著輸出等於input輸入。我們可以在這裡使用 CNOT 閘。當左側輸入（控制位）為|1&gt; 時，CNOT 門將翻轉目標位，因此右側輸出將為|1&gt;。而當左側輸入為|0&gt;時，目標位沒有被修改，所以右輸出為|0&gt;。</p><p>這就是該機器的 4 種模式在量子世界中的工作方式。最後一個問題是我們如何只用一個查詢（測試）來區分常數模式和變量模式！</p><p>我們應該做什麼？如果量子位元不在量子疊加態，我們需要在量子計算機中進行兩次查詢。所以我們應該在這台機器上安裝額外的量子閘。使我們可以利用量子態的疊加來加速查詢過程！</p><p><img src="/images/post_quantum2/final_de_q1.jpg" alt="Final circuit"></p><p>記住！我們使用 Hadamard 閘使量子位元進入到疊加態。如你所見，我們在黑盒子（該模式未知的機器）的左側添加了兩個 H 門。這是關鍵部分，就好像你啟用並行計算一樣！黑盒處理後，再次使用H門，破壞量子位元的疊加態，並測出數值(M代表測量)。最後，你會得到兩種output，0或1，分別代表了黑盒是處於常數模式或變量模式中。</p><p>驗算1:</p><p>假設黑盒是處於不做事模式，並預設輸入都是|0&gt;，上下量子位元經過X閘後都變成了|1&gt;，再經過H閘後，變成了[1&#x2F;√2 , -1&#x2F;√2]ᵀ，接著將兩個量子位元做CNOT，得右上的輸出為，CNOT( 1&#x2F;2[1,-1,-1,1]ᵀ ) &#x3D; 1&#x2F;2[1,-1,1,-1]ᵀ &#x3D; [1&#x2F;√2 , 1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2 , -1&#x2F;√2]ᵀ ，接著用H閘使之失去疊加態，得[1, 0]ᵀ, [0, 1]ᵀ ，最後結果為|01&gt;。</p><p>你可以通過將input指定為 |0&gt; 來計算結果，並嘗試機器內其他3種可能的工作模式，以得到最後觀察的結果。最後，我們展示了量子計算機如何在該問題上勝過經典計算機。若將此問題推廣，可以輸入n個量子比特，且機器有2^n種狀態，使用量子計算可以獲得指數倍的加速!</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> quantum computing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>量子計算-首部曲1</title>
+      <link href="/2023/09/10/quantun_m/"/>
+      <url>/2023/09/10/quantun_m/</url>
+      
+        <content type="html"><![CDATA[<p>某天，華生邀請了一個女生出去玩，但女生拒絕了他。 剎那，他的自信心下降到零。 然而，那僅僅是因為女生在那天剛好有事要忙，無法前往而已。幾天過後，ding!! 華生的手機傳來訊息，女生主動向華生提議傍晚去公園散步。哈! 一抹笑意自華生的嘴角溢出，就在這一瞬間，他的自信沖天而起！</p><p><img src="/images/post1/girl_boy_bits.jpg" alt="對於對方的心理狀態"></p><p>多麼戲劇化的人啊！ 由於某種原因，華生的性格總是處於極端狀態。例如，當你問他餓不餓時，他只會回答 “餓死了”或“撐死了”。 而我們的任務就是嘗試了解華生的內心狀態，並想辦法勾勒出一些藍圖！</p><p><img src="/images/post1/bit_01.jpg" alt="傳統位元"></p><p><img src="/images/post1/q_bit.jpg" alt="量子位元 (wiki)"></p><p>從這個思路往下走，假設增加一些概率來描述華生的信心怎麼樣？ 原本， 我們利用傳統比特，也就是0或1來描述華生的自信程度，1代表自信飛天，0代表無自信。這時回想一下薛丁格的貓，貓在毒氣箱子時，貓處於生與死的疊加態。以線性代數來說，貓的狀態 &#x3D; (波函數1)<em>(死亡) + (波函數2)</em>(生存)，為生存與死亡的某種組合疊加，以顏色來說，若活著是白色，死亡是黑色，則這隻貓處於一種不斷變化的灰色狀態。</p><p>回到華生的信心值，0 或 1，用疊加態來表示，得 (波函數1)<em>(0%信心) + (波函數2)</em>(100%信心) &#x3D; 華生的信心值。由於觀察華生後，只能發現兩種極端的結果，所以這兩種狀況發生的機率總和為1，這裡出現了第一個限制，由於波函數的機率值 &#x3D; || 波函數 ||² &#x3D; || Ψ ||² ，且因為有兩個波函數，所以最後的限制式為， || Ψ₁ ||² +|| Ψ₂ ||² &#x3D;1 。有了這個規則後，可以類推所謂的量子位元是什麼。</p><p>首先，我們定義一個向量 [a,b]ᵀ 來描述單個 qbit（量子位元）。 並添加上述的規則，其中a、b皆為波函數。</p><blockquote><p>規則：a 和 b 是複數。 且 ||a||² + ||b||² &#x3D; 1</p></blockquote><p>例如：一個量子位元可以表示為 [1&#x2F;√2,1&#x2F;√2]ᵀ 或 [-1,0]ᵀ 或 [√2&#x2F;√3,-1&#x2F;√3]ᵀ 。</p><p>現在回到華生的信心狀態。 如果我們將其描述為一個量子位元&#x3D; [1&#x2F;√2,1&#x2F;√2]ᵀ，這意味著當我們詢問華生時，我們有 50% 的機會發現他自信心爆棚，以及50%機會發現他毫無自信。(其中 (1&#x2F;√2)²&#x3D;1&#x2F;2&#x3D;0.5)</p><p>這就是量子力學的運作原理！ 當你觀察它時，它會有某種機率崩潰成某種狀態！ 我們可以通過計算波函數獲得其機率！</p><p>現在我們嘗試用量子位元的形式來描述一個經典的位元(傳統位元)。</p><p>經典位元 1&#x3D;[0,1]ᵀ 量子位元。 因為 [0,1]ᵀ 有 100% 的機率塌陷為 1。</p><p>經典位元 0&#x3D;[1,0]ᵀ 量子位元。 因為 [1,0]ᵀ 有 100% 的機率塌陷為 0。</p><h2 id="張量積"><a href="#張量積" class="headerlink" title="張量積"></a>張量積</h2><p>而如何表示兩個量子位元的系統？ 它們可以用兩個單一位元的“張量積”(tensor product)來表示！</p><blockquote><p>張量積([a,b]ᵀ , [c,d]ᵀ) 定義為 [a*[c,d]ᵀ , b*[c,d]ᵀ ]ᵀ &#x3D; [ac,ad,bc,bd]ᵀ &#x3D; [a,b]ᵀ ⊗ [c,d]ᵀ</p></blockquote><p>所以，[1&#x2F;√2,1&#x2F;√2]ᵀ ⊗ [1&#x2F;√2,1&#x2F;√2]ᵀ &#x3D; [1&#x2F;2, 1&#x2F;2, 1&#x2F;2, 1&#x2F;2]ᵀ。 因此，當你觀察這兩個量子位元時，你分別有1&#x2F;4的機率觀察到 00、01、10、11。<br>（因為（1&#x2F;2）²&#x3D;1&#x2F;4&#x3D;0.25）</p><p>我們將使用一些符號以方便表示。(我們使用實數 1 和 0 來簡化問題！）</p><p>|01&gt; &#x3D; [1,0]ᵀ ⊗ [0,1]ᵀ &#x3D; [0,1,0,0]ᵀ</p><p>|101&gt; &#x3D; |5&gt; &#x3D; [0,1]ᵀ ⊗ [1,0]ᵀ ⊗ [0,1]ᵀ&#x3D; [0,1]ᵀ ⊗ [0,1,0,0]ᵀ &#x3D; [0,0,0,1,0,0,0,0]ᵀ</p><p>哇！它呈指數增長。當我們需要描述 10 個 qbits 系統時，它需要 2¹⁰ 個複數！</p><p>不過為什麼要使用張量積呢？</p><p><img src="/images/post1/why_tensor_p.jpg" alt="示例 1"></p><p>想像某天華生和他的女朋友出去玩了，他（偷偷地）把女朋友的行為看作是兩個量子比特！一個 qbit 記錄購買蛋糕的概率。還有一個記錄了買衣服的概率。同樣，如果我們要表示 2 個 qbit，我們需要知道其狀態坍塌到 00、01、10 和 11 的機率。所以我們需要計算張量積來獲得組合機率！</p><p>根據示例 1，華生的女朋友有 0.54 的機會崩潰成 “11” 狀態，這意味著她買了兩件東西！她有 0.04 的機會崩潰至 “00”，這意味著沒買任何東西！</p><h2 id="糾纏態"><a href="#糾纏態" class="headerlink" title="糾纏態"></a>糾纏態</h2><p>如果我們不能分解兩個 qbits 的乘積狀態，那麼它們就是糾纏的！</p><p>例如：[a,b]ᵀ ⊗ [c,d]ᵀ &#x3D; [ac,ad,bc,bd]ᵀ &#x3D; [1&#x2F;√2,0,0,1&#x2F;√2]ᵀ ，其中 ac &#x3D; 1&#x2F;√2，ad &#x3D; 0，bc &#x3D; 0，bd &#x3D; 1&#x2F;√2</p><p>如果 ad &#x3D; 0，則 a 或 d 至少有一個是0，但是 ac不等於0，所以 a不等於0，接著 bd不等於0，所以 d不等於0，現在我們陷入了矛​​盾，所以該函數無法被分解。</p><p>注意！量子態 [1&#x2F;√2,0,0,1&#x2F;√2]ᵀ 有 0.5 機率塌陷到 |00&gt; 和 0.5 機率塌陷到 |11&gt;。所當你觀察其中一個 qbit 時，它會連帶另一個量子位元塌縮成 “00”或“11”！這就是為什麼不論他們離多遠，你可以立即知道另一個 qbit 狀態的原因！</p><h2 id="操縱量子比特、量子閘門"><a href="#操縱量子比特、量子閘門" class="headerlink" title="操縱量子比特、量子閘門"></a>操縱量子比特、量子閘門</h2><p>回顧經典計算機，它們是由許多邏輯閘組成的，例如AND、XOR、OR、NOT……。但是在量子世界中，我們不能再使用“邏輯”門了，因為像零或一這樣的“邏輯”是不存在的，除非通過觀察量子比特，並使它們崩潰。</p><p>以經典方式使用量子計算機是很浪費其潛力的。所以我們需要找到另一種方法可以對量子位元進行操作，並在得到結果之前保持它們不會崩潰！ 因此我們將所有運算核心定義成(N*N)矩陣，(其中N&#x3D;2^n, n&#x3D;1,2,3… )，而所有閘門就是矩陣，利用矩陣乘法，我們將可完成針對某量子位元的操作。</p><p>CNOT閘： 在兩個 qbits 量子態上使用。<br><img src="/images/post1/cnot.jpg" alt="CNOT 矩陣"></p><p>Hadamard 閘: 在單個 qbit 上使用。<br><img src="/images/post1/h_gate.gif" alt="哈達瑪 矩陣"></p><p>X 閘： 在單個 qbit 上使用。<br><img src="/images/post1/bit_flip.jpg" alt="翻轉 矩陣"></p><p>下一篇將闡述這些量子閘的用法。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> quantum computing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Free blog server</title>
+      <link href="/2023/03/25/server/"/>
+      <url>/2023/03/25/server/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Big-picture"><a href="#Big-picture" class="headerlink" title="Big picture"></a>Big picture</h2><p> <img src="/images/hexo_blog_bigPic.png" alt="架構圖1"></p><ul><li>在local端寫作與生成網頁，接著將網頁託管與備份原始文件在Github.io上，免去了維護服務器的功夫!</li></ul><h2 id="想寫部落格"><a href="#想寫部落格" class="headerlink" title="想寫部落格"></a>想寫部落格</h2><p>如果你想在網上寫部落格，租個服務器架wordpress，或是直接用別人搭建好的服務，如medium、Pixnet、其他社群媒體等。皆是非常方便的，但使用別人架設好的服務，你無法自己設計版面，大家都是一樣的，而使用自行架站的方式，雖然可以使用自己喜歡的框架，選擇自己喜歡的主題設計，但免不了要付一筆租借服務器的費用。有沒有類似wordpress的網站框架，又不用租借服務器的方法呢?</p><h2 id="Github-io"><a href="#Github-io" class="headerlink" title="Github.io"></a>Github.io</h2><p>前面提到，要架設一個部落格，總是需要一個主機，或者說服務器，而github網站上剛好就提供這樣子的免費服務。github是一個大型的代碼聚集地，你可以把自己的程式碼上傳至該網站，與他人共同編輯。而你所要展示的部落格其實也是由一堆html、css、js程式碼組成的，你只需要將這些程式碼放在該網站上即可。</p><p>然而，該網站只能幫你展示靜態的html文件，無法整合資料庫的操作，所以你無法像wordpress一樣，把內容抽離出來放在資料庫，當有人要瀏覽時，從資料庫讀出內容，與主題風格合併後，傳送給使用者。所以你在github上面只能將內容與主題一起編輯，並放在一個HTML文件中。</p><p>而這時候產生了一個問題，你可能有上百篇文章，這些都是一個個散落的html文件，當你想在這些頁面增加一個留言功能，或做其他修改時，你必須全部都改一遍，實在太麻煩了，因此我們需要把實際內容(文章、圖片)抽取出來，在製作好我們想要的外殼(風格)，最後把他們整合在一起就完成了!這樣當你想換個主題或增加減少一些功能時，只需要編輯主題資料夾的內容就行了。以下將介紹一種幫助我們完成此功能的工具。</p><h2 id="Hexo-框架"><a href="#Hexo-框架" class="headerlink" title="Hexo 框架"></a>Hexo 框架</h2><p>Hexo是一種靜態網站生成框架，它被廣泛用於寫網誌和建立個人網站。Hexo 的主要目標是使網站生成變得簡單且高效，同時提供了豐富的主題和插件，以滿足不同的需求。以下包含了Hexo框架的一些特點：</p><ol><li>靜態網站生成： Hexo 是一個靜態網站生成器，這意味著它將你的內容轉換成純HTML、CSS和JavaScript，使你的網站在瀏覽器中運行時不需要伺服器端處理。這提高了網站的性能和安全性。</li><li>Markdown 支援： Hexo支援Markdown，這是一種簡單且易於閱讀和編寫的標記語言。你可以使用Markdown編寫文章，Hexo會自動將其轉換為HTML。</li><li>多種主題： Hexo社群提供了許多免費和付費的主題，你可以輕鬆地為你的網站選擇一個合適的主題。這些主題通常有自定義設置，可以使你的網站更具特色。</li><li>插件擴展： Hexo允許你使用插件來擴展其功能。這些插件可以用於添加社交媒體分享按鈕、生成網站地圖、流量統計等。你還可以編寫自己的自定義插件。</li><li>版本控制和部署： 由於Hexo生成的網站是純靜態的，你可以使用版本控制系統（如Git）來管理網站的內容，並輕鬆部署到不同的主機或網站托管平台。</li></ol><h2 id="Hexo目錄架構"><a href="#Hexo目錄架構" class="headerlink" title="Hexo目錄架構"></a>Hexo目錄架構</h2><ul><li>source folder<ul><li>存放網頁md文件(實際內容)</li></ul></li><li>themes folder<ul><li>存放網頁主題風格的資料夾</li></ul></li><li>public folder<ul><li>當執行Hexo generate後，將會生成該資料夾，裡面為生成後的網站內容，可以用Hexo deploy將之上傳到github.io</li></ul></li><li>scaffold folder<ul><li>文章頁面開頭模板</li></ul></li><li>_config.yml<ul><li>Hexo 設定檔</li></ul></li></ul><h2 id="Install-Hexo-in-Windows"><a href="#Install-Hexo-in-Windows" class="headerlink" title="Install Hexo in Windows"></a>Install Hexo in Windows</h2><ol><li><p>Hexo是基於Node.js開發的，首先我們要安裝Node.js，請於<a href="https://nodejs.org/">https://nodejs.org/</a> 下載。</p></li><li><p>接著安裝Git，這邊利用Git來管理主題和插件，<a href="https://git-scm.com/">https://git-scm.com/</a> 下載。</p></li><li><p>最後安裝Hexo，按下(Win+r)，輸入cmd打開命令提示符或PowerShell，並執行以下命令安裝 Hexo。<br> <code>npm install -g hexo-cli</code></p></li><li><p>初始化 Hexo 網站： 在你想要創建 Hexo 網站的目錄下，運行以下命令來初始化一個新的 Hexo 網站：<br> <code>hexo init [myblog]</code></p><p> 這將在一個名為 “myblog” 的目錄中初始化一個新的Hexo工作目錄。</p></li><li><p>進入你的Hexo工作目錄<br> <code>cd myblog</code> </p></li><li><p>安裝依賴項：在你的Hexo目錄下，運行以下命令安裝依賴<br> <code>npm install</code></p><ul><li>若執行Hexo遇到權限問題 -&gt; <a href="https://israynotarray.com/other/20200510/1067127387/">https://israynotarray.com/other/20200510/1067127387/</a></li></ul></li></ol><h2 id="Hexo-使用方法"><a href="#Hexo-使用方法" class="headerlink" title="Hexo 使用方法"></a>Hexo 使用方法</h2><ul><li><p>創建新頁面<br>hexo new post [post_name]</p></li><li><p>md檔案撰寫</p><ul><li>想在Hexo中寫文章，必須使用mark down語法，其文件副檔名為 “.md”。<br>鑑於網路上已非常多相關教學文章，關於mark down語法，這邊就不再贅述。</li></ul></li><li><p>生成public靜態網站<br>hexo generate</p></li><li><p>預覽<br>hexo server 或 hexo s<br>之後開啟瀏覽器，貼上連結，開始參觀自己的網站啦。</p></li></ul><h2 id="主題更換"><a href="#主題更換" class="headerlink" title="主題更換"></a>主題更換</h2><p>在github中搜尋hexo theme，挑選喜歡的主題，將之下載並放置於themes資料夾之中。<br>最後修改_config.yml 使網頁變成自己喜歡的樣子</p><h2 id="插件安裝"><a href="#插件安裝" class="headerlink" title="插件安裝"></a>插件安裝</h2><p>一鍵部屬:<br>npm install –save hexo-deployer-git<br>搜索功能:<br>npm install hexo-generator-search –save<br>npm install hexo-generator-searchdb –save</p><p>插件皆須要修改根目錄下的_config.yml方可使用，通常github中的hexo theme會有對應的config可以參考修改。</p><h2 id="備份源碼"><a href="#備份源碼" class="headerlink" title="備份源碼"></a>備份源碼</h2><p>當一切都正常運作後，你希望在其他電腦上也能編輯文章，並且部署到github上，所以你必須複製整個hexo專案資料夾到另一台電腦上，這時你的源碼分岔出了兩個版本，一個是在你原本的電腦上，一個是你新複製的。你要讓兩個資料夾同步又挺麻煩的，要複製來複製去的，不如我們利用github上本來就有的功能，用push、pull的方式在本地端上傳與更新源碼，這樣我們github.io的網站就需要兩個repo來管理了，一個是本來就用來放靜態文件內容的xxx.github.io repo，另一個則是用來放整個hexo專案的source repo。(請參考架構圖1)</p><h2 id="一次到位"><a href="#一次到位" class="headerlink" title="一次到位!"></a>一次到位!</h2><p>當你用git將你編輯過的文章或心血的文章上傳至source repo後，你還需要用hexo generate 一個public資料夾出來，並將之放置(hexo deploy)於本來就創建好的xxx.github.io repo。有沒有一鍵更新呢?<br>我們可以使用Appveyor、或其他(CI)工具即可完成。然而這些其實也還是有點殺雞用牛刀的感覺，因為我們並不用自動測試等後續流程，所以自己寫個batch來完成這些事即可。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
