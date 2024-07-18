@@ -14,7 +14,9 @@
       
         <tags>
             
-            <tag> python json perf </tag>
+            <tag> python </tag>
+            
+            <tag> json </tag>
             
         </tags>
       
@@ -30,6 +32,18 @@
         <content type="html"><![CDATA[<p><img src="/images/react_native/react_native_big_work.jpg" alt="運作流程"></p><p>基於Javascript運作的React，通常是用於開發Web應用的，然而2015年3月React Native發佈了對iOS平臺的支持，同年9月開始支持Android平臺。<br>從此前端工程師便可以將一份code複用到多個平台上(Europe 2015大會提到，Facebook Ads Manager這款Android應用共享了其iOS版本87%的代碼)。<br><br><br>在此之前，要用React開發用於行動裝置的App，通常是將React轉換為HTML、CSS、Javascript，最後再用WebView進行渲染。然而因為無法使用原生平台的UI組件，<br>因此需要花費額外精力去模仿原生UI的動畫細節，而當這些細節改版時，一切又要重來了。<br><br><br>然而，當你使用React Native時，他會將原始碼解析成原生的UI。而跟傳統的iOS應用和Android應用比起來的話，React Native不用Xcode或Android Studio進行開發，<br>只需要任意的文字編輯器即可。此外，還可以利用瀏覽器的偵錯工具進行測試。<br><br><br>雖然React跟React Native很像。但在不同的平台需要不同的組件，單一組件並不一定適用全平臺。例如，DatePickerAndroid組件會調用安卓的日期選擇器，<br>而DatePickerIOS則會調用iPhone的。但是像View組件(類似Web中的div)則比較靈活，兩個平台都可使用。</p><p>比較圖</p><table><thead><tr><th align="center">React(Web)</th><th align="center">React Native</th></tr></thead><tbody><tr><td align="center">&lt;div&gt;</td><td align="center">&lt;View&gt;</td></tr><tr><td align="center">&lt;li&gt;</td><td align="center">&lt;ul&gt;,&lt;ListView&gt;</td></tr><tr><td align="center">&lt;img&gt;</td><td align="center">&lt;Image&gt;</td></tr><tr><td align="center">&lt;span&gt;</td><td align="center">&lt;Text&gt;</td></tr></tbody></table><p>接下來，我們將利用這些component開發一個App!</p>]]></content>
       
       
+      <categories>
+          
+          <category> soft dev </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react native </tag>
+            
+        </tags>
       
     </entry>
     
