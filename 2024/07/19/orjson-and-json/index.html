@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2023/3 |  jack.blog</title>
+      <title>超快速json解析器--orjson |  jack.blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -52,52 +52,153 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-orjson-and-json"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2023/3</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/25/server/" class="archive-article-date">
-  <time datetime="2023-03-25T13:16:15.000Z" itemprop="datePublished">03/25</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/25/server/"
-    >Free blog server</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  超快速json解析器--orjson
+</h1>
  
 
+      
     </header>
-    
-    
-  </div>
-</article>
-      
-      
+     
+    <div class="article-meta">
+      <a href="/2024/07/19/orjson-and-json/" class="article-date">
+  <time datetime="2024-07-18T16:32:17.000Z" itemprop="datePublished">2024-07-19</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">394</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-  </div>
-  
-  
+      
+
+
 
   
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>最近有優化一段python的需求，經過py-spy的分析後，發現json讀寫所消耗的時間，在所有function中名列前茅。由於自己優化整個json模組實在太耗時耗力又容易出錯了。所以想看看有沒有跑快一點的json的解析器，一陣研究跟測試後，還真的發現了”orjson”模組。</p>
+<p>該模組使用上也很簡單，只需要<code>pip install orjson</code>即可。</p>
+<p>根據<a target="_blank" rel="noopener" href="https://github.com/ijl/orjson?tab=readme-ov-file#migrating">https://github.com/ijl/orjson?tab=readme-ov-file#migrating</a> 文檔，Deserialize的部分，只需要loads(__obj: Union[bytes, bytearray, memoryview, str])即可。所以原本直接讀檔的json，需要將檔案轉成bytes或str類型。</p>
+<p>而Serialize支持的類型可多了，包含str, dict, list, tuple, int, float, bool, None, datetime.datetime, datetime.date, datetime.time, uuid.UUID, numpy.ndarray等，也一樣呼叫dumps() -&gt; bytes 即可。</p>
+<p>由於我主要用到deserialize的部分，因此我實際測試了讀取大型json檔案並解析的速度。<br>該檔案約1Gb，orjson比原生json快了約一倍。</p>
+<p>以下為orjson的特色:</p>
+<ol>
+<li>用 Rust 實現: orjson是用Rust語言編寫的。Rust 是一種以速度和內存安全著稱的系統編程語言。</li>
+<li>支援將datetime、numpy序列化。</li>
+<li>對某些數據類型,orjson 可以在不創建數據中間副本的情況下解析 JSON,減少內存使用並提高速度。</li>
+<li>該庫使用自定義內存分配策略,以最小化分配和釋放操作。</li>
+<li>orjson對於NaN&#x2F;Infinity並不支援並嚴格要求UTF-8編碼。</li>
+<li>將中文序列化時，”好” 不會變成 “\u597d”。</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/19/orjson-and-json/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-json-perf/" rel="tag">python json perf</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/07/14/react-native-1/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">React Native 序</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -221,6 +322,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

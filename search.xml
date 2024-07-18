@@ -4,6 +4,38 @@
   
     
     <entry>
+      <title>超快速json解析器--orjson</title>
+      <link href="/2024/07/19/orjson-and-json/"/>
+      <url>/2024/07/19/orjson-and-json/</url>
+      
+        <content type="html"><![CDATA[<p>最近有優化一段python的需求，經過py-spy的分析後，發現json讀寫所消耗的時間，在所有function中名列前茅。由於自己優化整個json模組實在太耗時耗力又容易出錯了。所以想看看有沒有跑快一點的json的解析器，一陣研究跟測試後，還真的發現了”orjson”模組。</p><p>該模組使用上也很簡單，只需要<code>pip install orjson</code>即可。</p><p>根據<a href="https://github.com/ijl/orjson?tab=readme-ov-file#migrating">https://github.com/ijl/orjson?tab=readme-ov-file#migrating</a> 文檔，Deserialize的部分，只需要loads(__obj: Union[bytes, bytearray, memoryview, str])即可。所以原本直接讀檔的json，需要將檔案轉成bytes或str類型。</p><p>而Serialize支持的類型可多了，包含str, dict, list, tuple, int, float, bool, None, datetime.datetime, datetime.date, datetime.time, uuid.UUID, numpy.ndarray等，也一樣呼叫dumps() -&gt; bytes 即可。</p><p>由於我主要用到deserialize的部分，因此我實際測試了讀取大型json檔案並解析的速度。<br>該檔案約1Gb，orjson比原生json快了約一倍。</p><p>以下為orjson的特色:</p><ol><li>用 Rust 實現: orjson是用Rust語言編寫的。Rust 是一種以速度和內存安全著稱的系統編程語言。</li><li>支援將datetime、numpy序列化。</li><li>對某些數據類型,orjson 可以在不創建數據中間副本的情況下解析 JSON,減少內存使用並提高速度。</li><li>該庫使用自定義內存分配策略,以最小化分配和釋放操作。</li><li>orjson對於NaN&#x2F;Infinity並不支援並嚴格要求UTF-8編碼。</li><li>將中文序列化時，”好” 不會變成 “\u597d”。</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> python json perf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>React Native 序</title>
+      <link href="/2024/07/14/react-native-1/"/>
+      <url>/2024/07/14/react-native-1/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/react_native/react_native_big_work.jpg" alt="運作流程"></p><p>基於Javascript運作的React，通常是用於開發Web應用的，然而2015年3月React Native發佈了對iOS平臺的支持，同年9月開始支持Android平臺。<br>從此前端工程師便可以將一份code複用到多個平台上(Europe 2015大會提到，Facebook Ads Manager這款Android應用共享了其iOS版本87%的代碼)。<br><br><br>在此之前，要用React開發用於行動裝置的App，通常是將React轉換為HTML、CSS、Javascript，最後再用WebView進行渲染。然而因為無法使用原生平台的UI組件，<br>因此需要花費額外精力去模仿原生UI的動畫細節，而當這些細節改版時，一切又要重來了。<br><br><br>然而，當你使用React Native時，他會將原始碼解析成原生的UI。而跟傳統的iOS應用和Android應用比起來的話，React Native不用Xcode或Android Studio進行開發，<br>只需要任意的文字編輯器即可。此外，還可以利用瀏覽器的偵錯工具進行測試。<br><br><br>雖然React跟React Native很像。但在不同的平台需要不同的組件，單一組件並不一定適用全平臺。例如，DatePickerAndroid組件會調用安卓的日期選擇器，<br>而DatePickerIOS則會調用iPhone的。但是像View組件(類似Web中的div)則比較靈活，兩個平台都可使用。</p><p>比較圖</p><table><thead><tr><th align="center">React(Web)</th><th align="center">React Native</th></tr></thead><tbody><tr><td align="center">&lt;div&gt;</td><td align="center">&lt;View&gt;</td></tr><tr><td align="center">&lt;li&gt;</td><td align="center">&lt;ul&gt;,&lt;ListView&gt;</td></tr><tr><td align="center">&lt;img&gt;</td><td align="center">&lt;Image&gt;</td></tr><tr><td align="center">&lt;span&gt;</td><td align="center">&lt;Text&gt;</td></tr></tbody></table><p>接下來，我們將利用這些component開發一個App!</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>量子計算-首部曲2</title>
       <link href="/2023/10/25/quantum2/"/>
       <url>/2023/10/25/quantum2/</url>

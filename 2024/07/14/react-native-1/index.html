@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2023/3 |  jack.blog</title>
+      <title>React Native 序 |  jack.blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -52,52 +52,174 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-react-native-1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2023/3</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/25/server/" class="archive-article-date">
-  <time datetime="2023-03-25T13:16:15.000Z" itemprop="datePublished">03/25</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/25/server/"
-    >Free blog server</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  React Native 序
+</h1>
  
 
+      
     </header>
-    
-    
-  </div>
-</article>
-      
-      
+     
+    <div class="article-meta">
+      <a href="/2024/07/14/react-native-1/" class="article-date">
+  <time datetime="2024-07-14T09:22:42.000Z" itemprop="datePublished">2024-07-14</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">384</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-  </div>
-  
-  
+      
+
+
 
   
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/images/react_native/react_native_big_work.jpg" alt="運作流程"></p>
+<p>基於Javascript運作的React，通常是用於開發Web應用的，然而2015年3月React Native發佈了對iOS平臺的支持，同年9月開始支持Android平臺。<br>從此前端工程師便可以將一份code複用到多個平台上(Europe 2015大會提到，Facebook Ads Manager這款Android應用共享了其iOS版本87%的代碼)。<br><br><br>在此之前，要用React開發用於行動裝置的App，通常是將React轉換為HTML、CSS、Javascript，最後再用WebView進行渲染。然而因為無法使用原生平台的UI組件，<br>因此需要花費額外精力去模仿原生UI的動畫細節，而當這些細節改版時，一切又要重來了。<br><br><br>然而，當你使用React Native時，他會將原始碼解析成原生的UI。而跟傳統的iOS應用和Android應用比起來的話，React Native不用Xcode或Android Studio進行開發，<br>只需要任意的文字編輯器即可。此外，還可以利用瀏覽器的偵錯工具進行測試。<br><br><br>雖然React跟React Native很像。但在不同的平台需要不同的組件，單一組件並不一定適用全平臺。例如，DatePickerAndroid組件會調用安卓的日期選擇器，<br>而DatePickerIOS則會調用iPhone的。但是像View組件(類似Web中的div)則比較靈活，兩個平台都可使用。</p>
+<p>比較圖</p>
+<table>
+<thead>
+<tr>
+<th align="center">React(Web)</th>
+<th align="center">React Native</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&lt;div&gt;</td>
+<td align="center">&lt;View&gt;</td>
+</tr>
+<tr>
+<td align="center">&lt;li&gt;</td>
+<td align="center">&lt;ul&gt;,&lt;ListView&gt;</td>
+</tr>
+<tr>
+<td align="center">&lt;img&gt;</td>
+<td align="center">&lt;Image&gt;</td>
+</tr>
+<tr>
+<td align="center">&lt;span&gt;</td>
+<td align="center">&lt;Text&gt;</td>
+</tr>
+</tbody></table>
+<p>接下來，我們將利用這些component開發一個App!</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/14/react-native-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/19/orjson-and-json/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            超快速json解析器--orjson
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/10/25/quantum2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">量子計算-首部曲2</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -221,6 +343,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
