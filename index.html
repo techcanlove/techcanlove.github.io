@@ -149,6 +149,60 @@
     
     
     <article
+  id="post-str2time-perf"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/07/21/str2time-perf/"
+    >字串轉timestamp加速</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/21/str2time-perf/" class="article-date">
+  <time datetime="2024-07-21T12:06:32.000Z" itemprop="datePublished">2024-07-21</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>當需要計算一個字串型態的Epoch Unix Timestamp時，通常會使用datetime.datetime.strptime(s, “%d&#x2F;%m&#x2F;%Y %H%M%s”).timestamp()<br>然而當你頻繁地呼叫該function時，因為其計算速度頗慢。而我使用該function時並不會傳入大量交錯的時間字串，而是單調遞增的時間字串。所以我將一天的起始當作基準，計算之後的時間過了幾秒，這樣我每天只需操作一次耗時的運算，剩下則是簡單數學運算。經過這樣改進後，經測試發現該方法比原來的快了約9倍。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import functools, datetime, time</span><br><span class="line">def str_to_second(date_str: str):</span><br><span class="line">    date_and_time = date_str.split(&quot; &quot;)</span><br><span class="line">    date = date_and_time[0]</span><br><span class="line"></span><br><span class="line">    @functools.lru_cache(1000)</span><br><span class="line">    def cache(_date):</span><br><span class="line">        return datetime.datetime.strptime(_date+&quot; 00:00:00&quot;, &quot;%Y-%m-%d %H:%M:%S&quot;).timestamp()</span><br><span class="line"></span><br><span class="line">    time_data = date_and_time[1].split(&quot;:&quot;)</span><br><span class="line">    hour, min, sec  = int(time_data[0]), int(time_data[1]), int(time_data[2])</span><br><span class="line">    second = cache(date) + hour*3600 + min*60 +sec</span><br><span class="line">    return second</span><br><span class="line"></span><br><span class="line">print(str_to_second(&quot;2024-01-02 02:22:04&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>注意，這邊不考慮潤秒問題，有精確時間需求者請小心。此外，當不能利用某一天算好的基準秒數時，也就是cache miss時，該方法並無優勢。</p>
+<p>10萬次執行後所花時間，0.656&#x2F;0.076 second ~&#x3D; 8.6倍速度提升</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/" rel="tag">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-orjson-and-json"
   class="article article-type-post"
   itemscope
